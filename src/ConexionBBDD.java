@@ -98,7 +98,6 @@ public class ConexionBBDD {
 		// Preparo la sentencia SQL CrearTablaPersonas
 		String insertsql = "INSERT INTO DANIEL.PERSONAS VALUES ('" + nombre + "','" + apellido + "','" + apellido2 + "','" + email + "')";
 
-		try{
 			int resultado = stm.executeUpdate(insertsql);
 
 			if(resultado != 1)
@@ -106,23 +105,7 @@ public class ConexionBBDD {
 			else
 				System.out.println("Persona insertada con éxito!!!");
 
-		}catch(SQLException sqle){
-
-			int pos = sqle.getMessage().indexOf(":");
-			String codeErrorSQL = sqle.getMessage().substring(0,pos);
-
-			if(codeErrorSQL.equals("ORA-00001") )
-				System.out.println("ERROR.La clave primaria ya esta en uso.!!!");
-			else
-				System.out.println("Ha habido algún problema con  Oracle al hacer la insercion de datos.");
-
-		}
-
-
-
 	}
-
-
 
 }
 
